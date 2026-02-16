@@ -30,8 +30,47 @@ class Main {
         
         char ch = s.charAt(0);
         String rest = s.substring(1);
-        subseq(rest,ans);
+        
         subseq(rest,ans+ch);
+        subseq(rest,ans);
+        
+    }
+    
+    //Combinations for 2 coins
+    static void cointoss(int t, String ans){
+        if(t == 0){
+            System.out.print(ans);
+            return;
+        }
+        
+        cointoss(t-1,ans+"H");
+        cointoss(t-1,ans+"T");
+    }
+    
+    //Board Path
+    static void boardPath(int curr, int end, String ans) {
+        if (curr == end) {
+            System.out.println(ans);
+            return;
+        }
+        if (curr > end) return;
+        for (int dice = 1; dice <= 6; dice++) {
+        boardPath(curr + dice, end, ans + dice);
+        }
+    }
+    
+    //Permutations
+    static void permutations(String s, String ans){
+        if(s.length() == 0){
+            System.out.print(ans);
+            return;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            String rest = s.substring(0, i) + s.substring(i + 1);
+        permutations(rest, ans + ch);
+        }
+
     }
     
     public static void main(String[] args) {
@@ -48,6 +87,18 @@ class Main {
         
         String a = "HELLO";
         subseq(a," ");
+    
+        System.out.println();
+        
+        cointoss(4," ");
+        
+        System.out.println();
+        
+        boardPath(0, 5, "");
+        
+        System.out.println();
+        
+        permutations("Hello", " ");
     }
     
     
