@@ -16,3 +16,26 @@ class Main {
         }
     }
 }
+
+class InvalidAgeException extends Exception{
+    InvalidAgeException(String message){
+        super(message);
+    }
+}
+class Main {
+    static void checkAge(int age) {
+        if(age < 18){
+            throw new InvalidAgeException("Age must be 18+");
+        }
+        System.out.println("Valid Age");
+    }
+    
+    public static void main(String[] args){
+        try{
+            checkAge(15);
+        }
+        catch(InvalidAgeException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
