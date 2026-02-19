@@ -39,3 +39,43 @@ class Main {
         }
     }
 }
+
+
+
+class Main {
+    public static void main(String[] args) {
+        int x = 100;
+        int y;
+        try{
+            x = x / 10;
+        }
+        catch (ArithmeticException e){
+            System.out.println("Caught");
+        }
+        finally{
+            try{
+            y = x / 10;
+            }
+           catch (ArithmeticException e){
+                System.out.println("Caught");
+            }
+    finally{
+           System.out.println("Finally Block Inner");
+           }
+            System.out.println("Finally Block");
+        }
+        
+        try{
+            System.out.println("A");
+            int x = 5/0;
+            System.out.println("B");
+        }
+        catch(ArithmeticException e){
+            System.out.println("C");
+        }
+        finally{
+            System.out.println("D");
+        }
+        System.out.println("E");
+    }
+}
